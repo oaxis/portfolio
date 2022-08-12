@@ -15,7 +15,7 @@ const texts = {
     commands: {
         notvalid: `is not a valid input, use 'help' to see available commands`,
         skills: `
-            --- FRONTEND
+            FRONTEND
             ###############################################
 
             [FRONTEND] Angular2 - 6 years ***
@@ -25,7 +25,7 @@ const texts = {
             [FRONTEND] Laravel (PHP) - 2 years
             [FRONTEND] SolidJS - learning
 
-            --- BACKEND
+            BACKEND
             ###############################################
 
             [BACKEND] NodeJS - 6 years ***
@@ -34,13 +34,13 @@ const texts = {
             [BACKEND] Python/Django - 1 year
             [BACKEND] Rust - learning
 
-            --- MOBILE & DESKTOP
+            MOBILE & DESKTOP
             ###############################################
 
             [MOBILE] IONIC - 4 years
             [DESKTOP] Electron - 2 years
 
-            --- DEVOPS
+            DEVOPS
             ###############################################
 
             [DEVOPS] Linux Management - 6 years
@@ -113,7 +113,7 @@ const texts = {
             If you're looking for someone who gets the job done in
             the most efficient and optimal way, I garantee you that I will.
     
-            find out more about me by typing 'projects', 'contact', 'skills' or 'softskills'.
+            find out more about me by typing 'projects', 'contact', 'skills' or 'softs'.
         `
     },
 }

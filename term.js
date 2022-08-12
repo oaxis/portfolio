@@ -3,6 +3,8 @@ const appHTML = `
 <textarea id="terminal" disabled></textarea>
 <input id="terminalInput" type="text" placeholder="type a command (use 'help' to see available commands)" />
 <span class="terminal-input-arrow">></span>
+<div id="infobox"><p></p><span onclick="infobox.style.display = 'none'">CLOSE</span></div>
+<div id="enablegui"><p>Do you want to enable GUI ?</p><span onclick="IS_GUI_ENABLED = true;enablegui.style.display = 'none'">yes</span><span onclick="IS_GUI_ENABLED = false;enablegui.style.display = 'none'">no</span></div>
 <div id="links"></div>
 <div id="autocomplete"></div>`;
 const body = document.getElementById('app');
@@ -11,6 +13,8 @@ const t = document.getElementById('terminal');
 const input = document.getElementById('terminalInput');
 const links = document.getElementById('links');
 const autocomplete = document.getElementById('autocomplete');
+const infobox = document.getElementById('infobox');
+const enablegui = document.getElementById('enablegui');
 
 // GLOBAL VARIABLES
 MAX_LINES = 100;
@@ -18,6 +22,7 @@ PREFIX_USER_COMMAND = '\n>';
 COMMAND_LIST = [];
 SOFT_SKILLS_URL = 'https://teambuildr.fr/test/c8c7cb23-48b9-4ba2-8c27-58bd65d2f631/profile';
 MEETING_URL = 'https://calendly.com/wilevx/30min'
+IS_GUI_ENABLED = false;
 // #########################
 
 /* 
@@ -164,6 +169,19 @@ const flushInner = (element) => {
     element.innerHTML = '';
 }
 
+/* 
+    Infobox displayer
+*/
+const displayInfobox = (text) => {
+    if(!IS_GUI_ENABLED)
+        return;
+    // fill infobox with text & formatting
+    infobox.childNodes[0].innerHTML = `${text}`.replace(/\n/g, '<br>');
+    infobox.style.display = 'block';
+    // recenter infobox based on width and screen width
+    infobox.style.left = `${(window.innerWidth - infobox.offsetWidth) / 2}px`;
+}
+
 /*
     Commands
 */
@@ -172,33 +190,39 @@ commands = {
         description: "Display all available commands",
         func: () => {
             // iterate over commands and print description
+            const commandList = [];
             for (let key in commands) {
-                terminalAppend(`${key}\t: ${commands[key].description}`);
+                commandList.push(`${key} - ${commands[key].description}`);
             }
+            terminalAppend(commandList.join('\n'));
         }
     },
     about: {
         description: "Display a short bio",
         func: () => {
             terminalAppend(texts.commands.about);
+            displayInfobox(texts.commands.about);
         }
     },
     skills: {
         description: "Display a list of my hard skills",
         func: () => {
             terminalAppend(texts.commands.skills);
+            displayInfobox(texts.commands.skills);
         }
     },
     works: {
         description: "Display my projects",
         func: () => {
             terminalAppend(texts.commands.projects);
+            displayInfobox(texts.commands.projects);
         }
     },
     contact: {
         description: "Display my contact informations",
         func: () => {
             terminalAppend(texts.commands.contact);
+            displayInfobox(texts.commands.contact);
         }
     },
     softs: {
@@ -234,6 +258,8 @@ const init = () => {
     document.title = texts.title;
     // Display welcome message
     terminalAppend(texts.welcome)
+    // Align GUI modal
+    enablegui.style.left = `${(window.innerWidth - enablegui.offsetWidth) / 2}px`;
     // Focus on the input
     input.focus();
 }
