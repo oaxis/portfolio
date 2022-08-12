@@ -1,5 +1,6 @@
 * {
     font-family: monospace;
+    font-weight: bold;
 }
 
 body{
@@ -37,15 +38,18 @@ body{
     right: 0;
     left: 0;
     height:30px;
-    border-top:1px solid green;
+    border-top:1px solid #fff;
     padding-left:30px;
+}
+#terminalInput:focus{
+    outline: none;
 }
 
 .terminal-input-arrow{
     position:fixed;
     bottom:15px;
     left: 15px;
-    color: green;
+    color: #fff;
     font-weight:bold;
 }
 
@@ -59,8 +63,8 @@ body{
 
 #links a{
     display: inline-block;
-    background: green;
-    color: #fff;
+    background: #fff;
+    color: #000;
     padding: 0.5em 1em;
     text-align: center;
     border-radius: 9999px;
@@ -74,11 +78,31 @@ body{
     width: 80px;
     left:30px;
     padding:5px 20px;
-    background:green;
-    color: #fff;
+    background:#fff;
+    color: #000;
     display: none;
 }
 #autocomplete span{
     display: block;
+}
+
+@media screen and (max-width: 600px) {
+    body{
+        overflow: hidden;
+    }
+
+    #terminal, #terminalInput{
+        font-size: 1em;
+        max-height: 90vh;
+    }
+    #terminalInput{
+        bottom: 10px;
+    }
+    #links{
+        display: none;
+    }
+    .terminal-input-arrow{
+        bottom:25px;
+    }
 }
 
