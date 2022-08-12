@@ -15,8 +15,9 @@ const autocomplete = document.getElementById('autocomplete');
 // GLOBAL VARIABLES
 MAX_LINES = 100;
 PREFIX_USER_COMMAND = '\n>';
-SOFT_SKILLS_URL = 'https://teambuildr.fr/test/c8c7cb23-48b9-4ba2-8c27-58bd65d2f631/profile';
 COMMAND_LIST = [];
+SOFT_SKILLS_URL = 'https://teambuildr.fr/test/c8c7cb23-48b9-4ba2-8c27-58bd65d2f631/profile';
+MEETING_URL = 'https://calendly.com/wilevx/30min'
 // #########################
 
 /* 
@@ -206,6 +207,12 @@ commands = {
             window.open(SOFT_SKILLS_URL, '_blank');
         }
     },
+    meeting: {
+        description: "Schedule a meeting",
+        func: () => {
+            window.open(MEETING_URL, '_blank');
+        }
+    },
     clear: {
         description: "Clears the terminal",
         func: () => {
@@ -223,6 +230,8 @@ const init = () => {
     for (let key in commands) {
         COMMAND_LIST.push(key);
     }
+    // Change tab title
+    document.title = texts.title;
     // Display welcome message
     terminalAppend(texts.welcome)
     // Focus on the input

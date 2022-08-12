@@ -1,4 +1,5 @@
 const texts = {
+    title: '> william.evieux',
     welcome: `
         ###################WILEVX#######################
         #                                            
@@ -95,6 +96,8 @@ const texts = {
             about: `
             About me
             ###############################################
+
+            Hello, I'm William Evieux,
     
             I wrote my first computer program when I was 9, 
             sold my development services on IT forums when I was 15, 
