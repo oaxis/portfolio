@@ -55,8 +55,8 @@ const texts = {
             Name: William Evieux
             Email: hello@wilevx.fr
             Phone: +33 6 41 81 71 85
-            LinkedIn: https://www.linkedin.com/in/wilevx
-            Github: https://github.com/oaxis
+            LinkedIn: www.linkedin.com/in/wilevx
+            Github: github.com/oaxis
             Discord: William.#1762
             `,
 
@@ -66,7 +66,7 @@ const texts = {
             Over 60 satisfied customers, below are 3 of my most
             work intensive recent projects.
             -------------------------------------------------
-            TEAMBUILDR - https://teambuildr.fr
+            TEAMBUILDR - teambuildr.fr
             Year : 2020 - now
             Role : Co-Founder & CTO
             Description : Founded in 2020, Teambuildr is a SaaS platform using
@@ -75,7 +75,7 @@ const texts = {
             Skillset : Psychometry, Angular, NodeJS, Ionic, Azure, AWS, CI/CD, Sysadmin, UX, UI, Mobile, Desktop ...
             Stats : Over 1 000 000 requests/month, 60+ B2B customers, 3000+ daily users.
             -------------------------------------------------
-            BRIK - https://brik.com
+            BRIK - brik.com
             Year : 2019 - now
             Role : Freelance React/Node developer
             Description : My mission @ Brik was to create a frontend for real estate

@@ -3,7 +3,7 @@ const appHTML = `
 <textarea id="terminal" disabled></textarea>
 <input id="terminalInput" type="text" placeholder="type a command (use 'help' to see available commands)" />
 <span class="terminal-input-arrow">></span>
-<div id="infobox"><p></p><span onclick="infobox.style.display = 'none'">CLOSE</span></div>
+<div id="infobox"><img src="me.jpg"/><p></p><span onclick="infobox.style.display = 'none'">CLOSE</span></div>
 <div id="enablegui"><p>Do you want to enable GUI ?</p><span onclick="IS_GUI_ENABLED = true;enablegui.style.display = 'none'">yes</span><span onclick="IS_GUI_ENABLED = false;enablegui.style.display = 'none'">no</span></div>
 <div id="links"></div>
 <div id="autocomplete"></div>`;
@@ -90,7 +90,7 @@ const handleTerminalLinks = () => {
             if (link.match(mailRegex)) {
                 linksHTML += `<a href="mailto:${link}" target="_blank">${link}</a>`;
             } else {
-                linksHTML += `<a href="https://${link}" target="_blank">${link}</a>`;
+                linksHTML += `<a href="//${link}" target="_blank">${link}</a>`;
             }
         }
         // Set links container childs to matched links
@@ -178,10 +178,23 @@ const displayInfobox = (text) => {
     if(!IS_GUI_ENABLED)
         return;
     // fill infobox with text & formatting
-    infobox.childNodes[0].innerHTML = `${text}`.replace(/\n/g, '<br>');
+    const linkRegex = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g;
+    infobox.childNodes[1].innerHTML = `${text}`
+    .replace(/\n/g, '<br>')
+    .replace(linkRegex, '<a href="$&" target="_blank">$&</a>');
     infobox.style.display = 'block';
     // recenter infobox based on width and screen width
     infobox.style.left = `${(window.innerWidth - infobox.offsetWidth) / 2}px`;
+}
+
+/*
+    Command output between CLI or GUI
+*/
+const commandOutput = (text) => {
+    if(!IS_GUI_ENABLED)
+        terminalAppend(text);
+    else
+        displayInfobox(text);
 }
 
 /*
@@ -202,29 +215,25 @@ commands = {
     about: {
         description: "Display a short bio",
         func: () => {
-            terminalAppend(texts.commands.about);
-            displayInfobox(texts.commands.about);
+            commandOutput(texts.commands.about);
         }
     },
     skills: {
         description: "Display a list of my hard skills",
         func: () => {
-            terminalAppend(texts.commands.skills);
-            displayInfobox(texts.commands.skills);
+            commandOutput(texts.commands.skills);
         }
     },
     works: {
         description: "Display my projects",
         func: () => {
-            terminalAppend(texts.commands.projects);
-            displayInfobox(texts.commands.projects);
+            commandOutput(texts.commands.projects);
         }
     },
     contact: {
         description: "Display my contact informations",
         func: () => {
-            terminalAppend(texts.commands.contact);
-            displayInfobox(texts.commands.contact);
+            commandOutput(texts.commands.contact);
         }
     },
     softs: {
