@@ -44,7 +44,7 @@ const texts = {
             ###############################################
 
             [DEVOPS] Linux Management - 6 years
-            [DEVOPS] Crons, security, containers, CI/CD - 6 years
+            [DEVOPS] CI/CD - 6 years
             [DEVOPS] Cloudflare - 5 years
             [DEVOPS] AWS - 2 years
             [DEVOPS] Azure - 1 year`,
@@ -114,6 +114,8 @@ const texts = {
             the most efficient and optimal way, I garantee you that I will.
     
             find out more about me by typing 'projects', 'contact', 'skills' or 'softs'.
-        `
+        `,
+        softs: `Opening soft skills analysis ...`,
+        meeting: `Opening calendly meeting scheduler ...`,
     },
 }

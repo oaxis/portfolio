@@ -108,8 +108,11 @@ input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
         if (input.value.length === 0)
             return;
+        
+        // Hide autocomplete
+        displayCommandList(false);
+        // Append user command to terminal
         terminalAppend(`${PREFIX_USER_COMMAND} ${input.value}`);
-
         // check if commands exist, if so execute related command
         if (commands[input.value] !== undefined) {
             commands[input.value].func();
@@ -126,10 +129,9 @@ input.addEventListener('keydown', (e) => {
     Listen for KeyUp on the terminal input
 */
 input.addEventListener('keyup', (e) => {
-    if(e.key === 'Enter'){
-        displayCommandList(false);
+    if(e.key === 'Enter')
         return;
-    }
+
     if (input.value.length > 0) {
         // Fill autocomplete list with commands matching the input
         flushInner(autocomplete);
@@ -229,12 +231,16 @@ commands = {
         description: "Opens my soft skills page",
         func: () => {
             window.open(SOFT_SKILLS_URL, '_blank');
+            terminalAppend(`SOFT_SKILLS_URL - ${SOFT_SKILLS_URL}`);
+            terminalAppend(texts.commands.softs);
         }
     },
     meeting: {
         description: "Schedule a meeting",
         func: () => {
             window.open(MEETING_URL, '_blank');
+            terminalAppend(`MEETING_URL - ${MEETING_URL}`);
+            terminalAppend(texts.commands.meeting);
         }
     },
     clear: {
@@ -243,6 +249,13 @@ commands = {
             t.value = links.innerHTML = '';
         }
     },
+    gui: {
+        description: "Enable/Disable GUI",
+        func: () => {
+            IS_GUI_ENABLED = !IS_GUI_ENABLED;
+            terminalAppend(`GUI ${IS_GUI_ENABLED ? 'enabled' : 'disabled'}`);
+        }
+    }
 }
 
 
