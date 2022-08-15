@@ -28,6 +28,7 @@ a{
     padding: 0.5em;
     overflow: auto;
     border:none;
+    width: 100vw;
 }
 
 #terminal{
@@ -36,6 +37,7 @@ a{
     bottom: 0;
     right: 0;
     max-height: calc(100vh - 120px);
+    height:calc(100vh - 120px);
     -ms-overflow-style: none; 
     scrollbar-width: none; 
 }
