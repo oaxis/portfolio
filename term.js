@@ -108,7 +108,7 @@ input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
         if (input.value.length === 0)
             return;
-        
+
         // Hide autocomplete
         displayCommandList(false);
         // Append user command to terminal
@@ -129,7 +129,7 @@ input.addEventListener('keydown', (e) => {
     Listen for KeyUp on the terminal input
 */
 input.addEventListener('keyup', (e) => {
-    if(e.key === 'Enter')
+    if (e.key === 'Enter')
         return;
 
     if (input.value.length > 0) {
@@ -175,13 +175,13 @@ const flushInner = (element) => {
     Infobox displayer
 */
 const displayInfobox = (text) => {
-    if(!IS_GUI_ENABLED)
+    if (!IS_GUI_ENABLED)
         return;
     // fill infobox with text & formatting
     const linkRegex = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g;
     infobox.childNodes[1].innerHTML = `${text}`
-    .replace(/\n/g, '<br>')
-    .replace(linkRegex, '<a href="$&" target="_blank">$&</a>');
+        .replace(/\n/g, '<br>')
+        .replace(linkRegex, '<a href="$&" target="_blank">$&</a>');
     infobox.style.display = 'block';
     // recenter infobox based on width and screen width
     infobox.style.left = `${(window.innerWidth - infobox.offsetWidth) / 2}px`;
@@ -191,7 +191,7 @@ const displayInfobox = (text) => {
     Command output between CLI or GUI
 */
 const commandOutput = (text) => {
-    if(!IS_GUI_ENABLED)
+    if (!IS_GUI_ENABLED)
         terminalAppend(text);
     else
         displayInfobox(text);
@@ -267,7 +267,6 @@ commands = {
     }
 }
 
-
 /*
     Init
 */
@@ -285,13 +284,13 @@ const init = () => {
     // Focus on the input
     input.focus();
     // Init Hotjar
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:3107322,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+    (function (h, o, t, j, a, r) {
+        h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
+        h._hjSettings = { hjid: 3283058, hjsv: 6 };
+        a = o.getElementsByTagName('head')[0];
+        r = o.createElement('script'); r.async = 1;
+        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
         a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
 }
 init();
